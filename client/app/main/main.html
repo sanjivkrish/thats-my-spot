@@ -1,0 +1,24 @@
+<div  class="animate-hide" ng-show='trip.pdfStatus'>
+    <br><br>
+
+<!--  Division to display the map and venue  -->
+    <div id="mainDiv">
+<!--  Form to get the user input  -->
+        <form class="form-inline">
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="trip.searchplace" placeholder="Destination"><br><br>
+                <button type="submit" class="form-control btn-info" ng-click="trip.search()"><span class="glyphicon glyphicon-search"></span> Search</button><br><br>
+            </div>
+        </form>
+
+        <div ng-hide="trip.places">
+            <b>{{trip.errorReport}}</b>
+        </div>
+
+ <!-- location to Display the map-->
+        <a id="mapLocation"></a>
+        <div class="animate-show" id="map" ng-show="trip.places">
+            <div id="map-canvas"></div>
+        </div>
+    </div>
+</div>
