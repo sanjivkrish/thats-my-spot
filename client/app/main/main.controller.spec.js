@@ -14,7 +14,7 @@ describe('Controller: MainCtrl', function () {
     $httpBackend = _$httpBackend_;
 
     scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
+    MainCtrl = $controller('MainController', {
       $scope: scope
     });
   }));
