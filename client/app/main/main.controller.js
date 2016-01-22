@@ -2,9 +2,23 @@
 
 var app = angular.module('assignment8App');
 
+//Factory containing the object to store the datas that are selected by user
+app.factory('selectedVenue', function () {
+    return {
+        venuename : [],
+        venueDetails : []
+    };
+});
+
 //Controller to handle the venue module
-app.controller('MainController', function ($scope, $http, $anchorScroll, $location) {
+app.controller('MainController', function ($scope, $http, $anchorScroll, $location, selectedVenue) {
     $scope.trip = {};
+    $scope.trip.pdfStatus = true;
+
+    //Function to route the page to initial state
+    $scope.trip.redirectHome = function () {
+        $location.path('home');
+    }
 
     //Passing Latitude, longitude and Zoom value as an argument to get that location
     $scope.trip.initializeMap = function (lat, lng, zoomValue) {
@@ -33,5 +47,26 @@ app.controller('MainController', function ($scope, $http, $anchorScroll, $locati
                 $scope.trip.places = false;
                 $scope.trip.errorReport = "No results found";
             });
+    };
+
+    $scope.trip.goToMap = function () {
+        // call $anchorScroll()
+        $anchorScroll();
+    };
+
+    //Changing the button "ADD" in the container
+    $scope.trip.toggle = function (obj) {
+        var i, status = true;
+        for (i in selectedVenue.venuename) {
+            if (selectedVenue.venuename[i] === obj.name) {
+                selectedVenue.venuename.splice(0, 1);
+                selectedVenue.venueDetails.splice(0, 1);
+                status = false;
+            }
+        }
+        if (status === true) {
+            selectedVenue.venuename.push(obj.name);
+            selectedVenue.venueDetails.push(obj);
+        }
     };
 });

@@ -20,5 +20,52 @@
         <div class="animate-show" id="map" ng-show="trip.places">
             <div id="map-canvas"></div>
         </div>
+
+      <!--  Generating venues based on foursquare response  -->
+        <div>
+            <div class="animate-show" ng-show="trip.places">
+                <span class="leftfixed"><button  class="btn-lg btn-success" ng-click="trip.redirectHome()">Home</button></span>
+                <div class="panel-group">
+                    <div class="panel panel-primary" ng-repeat="place in trip.places">
+                        <div class="panel-heading">
+                            <label>{{place.venue.categories[0].pluralName}} :<span class="venueName">{{place.venue.name}}</span></label>
+                            <span class="viewMap">
+                                <span class="heading">
+                                    <button class="btn btn-info" ng-class="{'btn-info':!toggled, 'btn-success':toggled}" ng-click="toggled = !toggled;trip.toggle(place.venue)">{{!toggled ? '&nbsp;Add&nbsp;' : 'Added'}}
+                                    </button>
+                                </span>
+                                <a ng-click="trip.goToMap()">
+                                    <button class="btn btn-info" ng-click="trip.initializeMap(place.venue.location.lat,place.venue.location.lng,18)"><span class="glyphicon glyphicon-search"></span> View in map</button>
+                                </a>
+                            </span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="left">
+                                <span ng-show="place.venue.location.formattedAddress">
+                                    <b>Address</b><br>
+                                    <span id="address" ng-repeat="address in place.venue.location.formattedAddress track by $index">
+                                        {{address}}<br>
+                                    </span>
+                                </span>
+                                <span ng-show="place.venue.hours.status">
+                                    <b>Status</b><br>
+                                    <span id="status">
+                                        {{place.venue.hours.status}}<br>
+                                    </span>
+                                </span>
+                                <span ng-show="place.tips">
+                                    <b>Tips</b><br>
+                                    <span ng-repeat="tip in place.tips">{{tip.text}}<br></span>
+                                </span>
+                            </div>
+                            <span id="rating">
+                                <b>Rating :</b>{{place.venue.rating || "NA"}}<br>
+                                <a href="{{place.venue.url}}" target="_blank">{{place.venue.url}}</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
