@@ -1,6 +1,7 @@
+/* google:true */
 'use strict';
 
-var app = angular.module('assignment8App');
+var app = angular.module('thatsMySpotApp');
 
 //Factory containing the object to store the datas that are selected by user
 app.factory('selectedVenue', function () {
@@ -18,7 +19,7 @@ app.controller('MainController', function ($scope, $http, $anchorScroll, $locati
     //Function to route the page to initial state
     $scope.trip.redirectHome = function () {
         $location.path('home');
-    }
+    };
 
     //Function to scroll up
     $(document).ready(function () {
@@ -48,7 +49,7 @@ app.controller('MainController', function ($scope, $http, $anchorScroll, $locati
             zoom: zoomValue,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        var map = new google.maps.Map(document.getElementById("map-canvas"), mapProp);
+        var map = new google.maps.Map(document.getElementById('map-canvas'), mapProp);
         var marker = new google.maps.Marker({
             position: myCenter
         });
@@ -65,7 +66,7 @@ app.controller('MainController', function ($scope, $http, $anchorScroll, $locati
             })
             .error(function (data) {
                 $scope.trip.places = false;
-                $scope.trip.errorReport = "No results found";
+                $scope.trip.errorReport = 'No results found';
             });
     };
 
