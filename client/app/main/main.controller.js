@@ -74,6 +74,24 @@ app.controller('MainController', function ($scope, $http, $anchorScroll, $locati
         $anchorScroll();
     };
 
+    //Function to generate the PDF
+    $scope.trip.saveVenue = function () {
+        $scope.trip.pdfStatus = false;
+        $('html, body').animate({scrollTop : 0}, 800);
+        $scope.places = selectedVenue.venueDetails;
+        $scope.trip.generatePdf = function () {
+            var i;
+            var pdf = new jsPDF('p', 'pt', 'letter');
+            pdf.setFontSize(14);
+            pdf.text(70,20,'Destinations');
+            for (i in selectedVenue.venueDetails) {
+                var j = parseInt(i) + 1;
+                pdf.text(20,(40 + (i * 14)),j+'. '+selectedVenue.venueDetails[i].name);
+            }
+            pdf.save('sample-file.pdf');
+        };
+    };
+
     //Changing the button "ADD" in the container
     $scope.trip.toggle = function (obj) {
         var i, status = true;
