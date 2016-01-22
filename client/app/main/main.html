@@ -22,10 +22,11 @@
             <div id="map-canvas"></div>
         </div>
 
-      <!--  Generating venues based on foursquare response  -->
+<!--  Generating venues based on foursquare response  -->
         <div>
             <div class="animate-show" ng-show="trip.places">
                 <span class="leftfixed"><button  class="btn-lg btn-success" ng-click="trip.redirectHome()">Home</button></span>
+                <span class="fixed"><button  class="btn-lg btn-success" ng-click="trip.saveVenue()">Save</button></span><br><br>
                 <div class="panel-group">
                     <div class="panel panel-primary" ng-repeat="place in trip.places">
                         <div class="panel-heading">
@@ -66,6 +67,35 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--  Division to display the selected venue  -->
+<div  class="animate-show" ng-show="!trip.pdfStatus">
+    <span class="leftfixed"><button  class="btn-lg btn-success" ng-click="trip.redirectHome()">Home</button></span>
+    <br><br>
+    <button class="btn-lg btn-success" ng-click="trip.generatePdf()">Download as PDF</button>
+    <br><br><br>
+    <div class="panel-group">
+        <div class="panel panel-primary" ng-repeat="place in places">
+            <div class="panel-heading">
+                <label>{{place.categories[0].pluralName}} :<span class="venueName">{{place.name}}</span></label>
+            </div>
+            <div class="panel-body">
+                <div class="left">
+                    <span ng-show="place.location.formattedAddress">
+                        <b>Address</b><br>
+                        <span id="address" ng-repeat="address in place.location.formattedAddress track by $index">
+                            {{address}}<br>
+                        </span>
+                    </span>
+                </div>
+                <span id="rating">
+                    <b>Rating :</b>{{place.rating || "NA"}}<br>
+                    <a href="{{place.url}}" target="_blank">{{place.url}}</a>
+                </span>
             </div>
         </div>
     </div>
