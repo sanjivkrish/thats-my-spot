@@ -5,6 +5,6 @@ angular.module('thatsMySpotApp')
     $routeProvider
       .when('/', {
         templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainController'
       });
   });
