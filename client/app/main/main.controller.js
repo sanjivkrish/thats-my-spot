@@ -20,6 +20,26 @@ app.controller('MainController', function ($scope, $http, $anchorScroll, $locati
         $location.path('home');
     }
 
+    //Function to scroll up
+    $(document).ready(function () {
+
+        //Check to see if the window is top if not then display button
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('.scrollToTop').fadeIn();
+            } else {
+                $('.scrollToTop').fadeOut();
+            }
+        });
+
+        //Click event to scroll to top
+        $('.scrollToTop').click(function () {
+            $('html, body').animate({scrollTop : 0}, 800);
+            return false;
+        });
+
+    });
+
     //Passing Latitude, longitude and Zoom value as an argument to get that location
     $scope.trip.initializeMap = function (lat, lng, zoomValue) {
         var myCenter = new google.maps.LatLng(lat, lng);
