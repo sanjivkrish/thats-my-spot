@@ -1,16 +1,75 @@
+html, body{
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+  }
+body {
+    background-image: url(../../assets/images/travel3.jpg);
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: top center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed;
+}
+.panel-group {
+    padding-left: 15%;
+    width: 85%;
+}
+#mainDiv{
+    height: 100%;
+}
+#map {
+    height: 350px;
+    width: 173%;
+    padding-left: 10%;
+}
+#map-canvas{
+    height: 100%;
+    width: 50%;
+    margin: 0px;
+    padding: 0px
+  }
+.viewMap {
+    float: right;
+    padding-right: 1%;
+}
 .thing-form {
     margin: 20px 0;
 }
-
+.panel-body {
+    text-align: left;
+}
+.left {
+    padding-left: 1%;
+    float: left;
+}
+.venueName {
+    color: darkblue;
+}
+#address,#status {
+    font-family: cursive;
+    font-style: normal;
+}
+#rating{
+    text-align: right;
+    float: right;
+    padding-right: 1%;
+}
 #banner {
     border-bottom: none;
     margin-top: -20px;
 }
 
 #banner h1 {
+    text-align: center;
     font-size: 60px;
     line-height: 1;
     letter-spacing: -1px;
+}
+h1,.form-inline {
+    text-align: center;
 }
 
 .hero-unit {
@@ -28,7 +87,46 @@
     margin-top: 70px;
     border-top: 1px solid #E5E5E5;
 }
-
-.navbar-text {
-    margin-left: 15px;
+.animate-show {
+  -moz-transition:all linear 1s;
+  -o-transition:all linear 1s;
+  transition:all linear 1s;
+  display:block!important;
+  -webkit-transition:all linear 1s;
+  transition:all linear 1s;
+  opacity:1;
+}
+ 
+.animate-show.ng-hide-add,
+.animate-show.ng-hide-remove {
+  display:block;
+}
+ 
+.animate-show.ng-hide {
+  opacity:0;
+}
+.scrollToTop{
+	width:100px; 
+	height:200px;
+	padding:10px; 
+	text-align:center; 
+	font-weight: bold;
+	text-decoration: none;
+	position:fixed;
+	top:90%;
+	right:1%;
+	display:none;
+}
+.scrollToTop:hover{
+	text-decoration:none;
+}
+.fixed {
+    position: fixed;
+    top: 1%;
+    right: 2%;
+}
+.leftfixed {
+    position: fixed;
+    top: 1%;
+    left: 2%;
 }
